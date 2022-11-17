@@ -3,13 +3,13 @@ using JetBrains.Annotations;
 
 namespace Tapeti.Annotations
 {
-    /// <inheritdoc />
     /// <summary>
     /// Creates a non-durable auto-delete queue to receive messages. Can be used
     /// on an entire MessageController class or on individual methods.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     [MeansImplicitUse]
+    [PublicAPI]
     public class DynamicQueueAttribute : Attribute
     {
         /// <summary>
