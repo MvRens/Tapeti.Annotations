@@ -85,20 +85,20 @@ namespace Tapeti.Annotations
         /// <summary>
         /// Any arguments to add which are not supported by properties of QueueArguments.
         /// </summary>
-        public IReadOnlyDictionary<string, string> CustomArguments { get; private set; }
+        public IReadOnlyDictionary<string, object> CustomArguments { get; private set; }
 
 
         /// <inheritdoc cref="QueueArgumentsAttribute"/>
         /// <param name="customArguments">Any arguments to add which are not supported by properties of QueueArguments. Must be a multiple of 2, specify each key followed by the value.</param>
-        public QueueArgumentsAttribute(params string[] customArguments)
+        public QueueArgumentsAttribute(params object[] customArguments)
         {
             if (customArguments.Length % 2 != 0)
                 throw new ArgumentException("customArguments must be a multiple of 2 to specify each key-value combination", nameof(customArguments));
 
-            var customArgumentsPairs = new Dictionary<string, string>();
+            var customArgumentsPairs = new Dictionary<string, object>();
 
             for (var i = 0; i < customArguments.Length; i += 2)
-                customArgumentsPairs[customArguments[i]] = customArguments[i + 1];
+                customArgumentsPairs[(string)customArguments[i]] = customArguments[i + 1];
 
             CustomArguments = customArgumentsPairs;
         }
