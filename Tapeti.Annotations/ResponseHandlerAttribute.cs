@@ -9,6 +9,9 @@ namespace Tapeti.Annotations
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     [PublicAPI]
+    #if NET6_0_OR_GREATER // Tapeti 2 is the last version to support .NET Standard 2.0 in the core package, so there is no upgrade path for older clients.
+    [Obsolete("Use the ResponseHandler attribute from Tapeti.Config.Annotations")]
+    #endif
     public class ResponseHandlerAttribute : Attribute
     {
     }

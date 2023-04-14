@@ -10,6 +10,9 @@ namespace Tapeti.Annotations
     [AttributeUsage(AttributeTargets.Class)]
     [MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
     [PublicAPI]
+    #if NET6_0_OR_GREATER // Tapeti 2 is the last version to support .NET Standard 2.0 in the core package, so there is no upgrade path for older clients.
+    [Obsolete("Use the MessageController attribute from Tapeti.Config.Annotations")]
+    #endif
     public class MessageControllerAttribute : Attribute
     {
     }
