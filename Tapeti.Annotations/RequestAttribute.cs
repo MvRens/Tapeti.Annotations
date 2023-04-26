@@ -1,8 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 
 namespace Tapeti.Annotations
 {
-    /// <inheritdoc />
     /// <summary>
     /// Can be attached to a message class to specify that the receiver of the message must
     /// provide a response message of the type specified in the Response attribute. This response
@@ -11,6 +11,7 @@ namespace Tapeti.Annotations
     /// to the queue specified in the reply-to header automatically added by Tapeti.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
+    [PublicAPI]
     public class RequestAttribute : Attribute
     {
         /// <summary>

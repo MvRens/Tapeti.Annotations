@@ -3,13 +3,16 @@ using JetBrains.Annotations;
 
 namespace Tapeti.Annotations
 {
-    /// <inheritdoc />
     /// <summary>
     /// Creates a non-durable auto-delete queue to receive messages. Can be used
     /// on an entire MessageController class or on individual methods.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     [MeansImplicitUse]
+    [PublicAPI]
+    #if NET6_0_OR_GREATER // Tapeti 2 is the last version to support .NET Standard 2.0 in the core package, so there is no upgrade path for older clients.
+    [Obsolete("Use the DynamicQueue attribute from Tapeti.Config.Annotations")]
+    #endif
     public class DynamicQueueAttribute : Attribute
     {
         /// <summary>

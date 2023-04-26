@@ -1,8 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 
 namespace Tapeti.Annotations
 {
-    /// <inheritdoc />
     /// <summary>
     /// Can be attached to a message class to override or extend the generated routing key.
     /// One of the intended scenarios is for versioning messages, where you want to add for example a
@@ -21,6 +21,7 @@ namespace Tapeti.Annotations
     /// other way this remark does not apply and prior versions of Tapeti are compatible.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
+    [PublicAPI]
     public class RoutingKeyAttribute : Attribute
     {
         /// <summary>
